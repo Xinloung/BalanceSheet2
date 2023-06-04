@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Balance Sheet</string>
+
+    <string name="content_description">image</string>
+    <string name="title_login">LOGIN</string>
+    <string name="et_hint_email_id">Email ID</string>
+    <string name="et_hint_password">Password</string>
+    <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="btn_lbl_login">Login</string>
+    <string name="not_yet_registered">Not Registered?</string>
+    <string name="register"><u>Register</u></string>
+
+    <!--    Register-->
+    <string name="create_an_account">CREATE AN ACCOUNT</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="et_confirm_password">Confirm Password</string>
+
+    <string name="terms_and_conditions_agreement">I Agree to The <u>Terms &amp; Conditions</u></string>
+    <string name="btn_lbl_register">Register</string>
+
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login"><u>Login</u></string>
+    <string name="hint_tax_registration_number">(TRN/SSN)</string>
+    <string name="err_msg_enter_first_name">Please Enter First Name</string>
+    <string name="err_msg_enter_last_name">Please Enter Last Name</string>
+    <string name="err_msg_enter_trn">Please Enter Valid Tax Registration Number</string>
+    <string name="err_msg_enter_password">Please Enter Password</string>
+    <string name="err_msg_enter_email">Please Enter Valid Email Address</string>
+    <string name="err_msg_enter_confirm_password">Please Enter Confirm Password</string>
+    <string name="err_msg_agree_terms_and_conditions">Agree to Terms and Conditions</string>
+    <string name="msg_success_registration">Successfully Registered!</string>
+    <string name="err_msg_confirm_password_mismatch">Password and Confirm Password do not match!</string>
+    <string name="err_msg_password_minimum">Password must be a minimum of 8 characters</string>
+    <string name="please_wait">Please Wait&#8230;</string>
+
+    <string name="route_discount">Route Discount</string>
+    <string name="logged_in_as">Logged In As</string>
+    <string name="please_check_internet_connection">Please Check Internet Connection</string>
+    <string name="unable_to_contact_server">Unable To Contact Server</string>
+    <string name="incorrect_email_or_password">Incorrect Email/Password</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="submit">Submit</string>
+    <string name="verify">Verify</string>
+    <string name="terms_and_conditions">By accepting the terms and conditions you are stating, indicating, acknowledging responsibility for the information provided.
+                                        \n\n You will be held accountable for any false, misrepresented or untrue information and may be liable for punishment.
+                                        </string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="btn_change">Change</string>
+    <string name="new_balance_sheet">New Balance Sheet</string>
+    <string name="select_date">SELECT DATE</string>
+    <string name="statement_opening_balance">Statement Opening balance</string>
+    <string name="pick_up_load_value">Pick-Up Load Value</string>
+    <string name="total_to_account_for">Total To Account For</string>
+    <string name="less">Less</string>
+    <string name="accounts_receivables">Accounts Receivables</string>
+    <string name="cash_cheque_sales">Cash/Cheque Sales</string>
+    <string name="accumulated_customer_balance">Accumulated Customer Balance</string>
+    <string name="customer_balance_collection">Customer Balance Collection</string>
+    <string name="non_ar_credit_sales_for_today">NON AR Credit Sales [For Today]</string>
+    <string name="returns_damaged_goods">Returns [Damaged Goods]</string>
+    <string name="credit_notes_bin_transfer">Credit Notes / [Bin Transfer]</string>
+    <string name="returned_cheques">Returned Cheques</string>
+    <string name="post_dated_cheques">Post Dated Cheques</string>
+    <string name="tax_exemption">Tax Exemption</string>
+    <string name="route_expense">Route Expense</string>
+    <string name="excess_charges">Excess Charges</string>
+    <string name="truck_stock">Truck Stock</string>
+    <string name="other_misc">Other Misc</string>
+    <string name="total_accounted_for">Total Accounted For</string>
+    <string name="net_overage_shortage">Net Overage/Shortage</string>
+    <string name="copyright">Copyright &#xA9; 2020 - %1$s</string>
+    <string name="customer_balance">Customer Balance</string>
+    <string name="remaining_customer_balance">Remaining Customer Balance</string>
+    <string name="other_calculations">Other Calculations</string>
+    <string name="easter_remaining_customer_balance">Easter Remaining Customer Balance</string>
+    <string name="easter_non_ar_credit_sales">Easter Non AR Credit Sales</string>
+    <string name="easter_customer_balance_collection">Easter Customer Balance Collection</string>
+    <string name="easter_accumulated_customer_balance">Easter Accumulated Customer Balance</string>
+    <string name="easter_customer_balance">Easter Customer Balance</string>
+    <string name="comments">Comments</string>
+    <string name="account_type">Account</string>
+    <string name="route_type">Route Type</string>
+    <string name="sample_recovery">Sample Recovery</string>
+    <string name="sample_recovery_accumulated">Sample Recovery Accumulated</string>
+    <string name="samples_issued_for_today">Samples Issued For Today</string>
+    <string name="total_sample_recovery">Total Sample Recovery</string>
+    <string name="route_assigned">Route</string>
+    <string name="title_terms_and_conditions">Terms and Conditions</string>
+    <string name="err_msg_invalid_trn">Invalid TRN/SSN</string>
+    <string name="err_msg_invalid_email_address">"Invalid Email "</string>
+    <string name="err_msg_incorrect_email_and_password_combination">Email/Password combination Incorrect</string>
+    <string name="err_msg_unable_to_contact_server">Unable to contact server</string>
+    <string name="build_version">Build Version : %1$s</string>
+    <string name="err_msg_trn_or_email_already_registered">TRN/SSN or Email Already Registered!</string>
+    <string name="tv_user">User</string>
+    <string name="tv_dashboard">Dashboard</string>
+    <string name="title_login_required">Login Required</string>
+    <string name="dialog_body_login_required">This action requires that you be logged in. \n \n You will be taken to the login screen</string>
+    <string name="err_msg_check_internet">Something went wrong, check internet connection and try again</string>
+    <string name="sa_tv_date">Date : %1$s</string>
+    <string name="sa_tv_net">Net Amount : $ %1$s</string>
+    <string name="service_location">Country</string>
+    <string name="location">Location</string>
+    <string name="title_create_account">CREATE ACCOUNT</string>
+
+
+</resources>

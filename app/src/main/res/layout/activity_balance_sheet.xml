@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.BalanceSheetActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_balancesheet"
+        android:layout_width="@dimen/pb_dimens"
+        android:layout_height="@dimen/pb_dimens"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tb_balance_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/red_grad"
+        app:layout_constraintBottom_toTopOf="@+id/ll_account_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.continentalbakingco.balancesheet20.utils.MTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/new_balance_sheet"
+                android:textColor="@color/white"
+                android:textSize="@dimen/title_text_size" />
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cs_header"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/ll_account_type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tb_balance_sheet"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintVertical_chainStyle="spread"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/cv_user"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sp_route_id"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0">
+
+            <com.continentalbakingco.balancesheet20.utils.MTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/logged_in_as"
+                android:textSize="12sp"
+                app:textAllCaps="true" />
+
+            <com.continentalbakingco.balancesheet20.utils.MTextView
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="12sp"
+                app:textAllCaps="true" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/sp_route_id"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:foregroundTint="@color/red_500"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/til_tv_date"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/cv_user"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_tv_date"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="16dp"
+            android:foreground="?selectableItemBackground"
+            android:hint="@string/select_date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toEndOf="@+id/sp_route_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:startIconDrawable="@drawable/ic_baseline_calendar_today_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tvDate"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusableInTouchMode="false"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_account_type"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="2dp"
+        android:background="@drawable/spinner_style"
+        android:padding="2dp"
+        app:layout_constraintBottom_toTopOf="@id/sv_balance_sheet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cs_header"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <com.continentalbakingco.balancesheet20.utils.MTextView
+            android:id="@+id/tv_account_type"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/account_type"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sp_account_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/sp_account_type"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_route_type"
+            app:layout_constraintStart_toEndOf="@id/tv_account_type"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.continentalbakingco.balancesheet20.utils.MTextView
+            android:id="@+id/tv_route_type"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:text="@string/route_type"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/sp_route_type"
+            app:layout_constraintStart_toEndOf="@id/sp_account_type"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/sp_route_type"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_route_type"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/sv_balance_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:fillViewport="false"
+        app:layout_constraintBottom_toTopOf="@+id/cs_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_account_type"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--Opening Balance-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_opening_balance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/statement_opening_balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etStatementOpening"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Load Value-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_pickup_load_value"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/pick_up_load_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_opening_balance">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etLoadValue"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Route Discount-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_route_discount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/route_discount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_pickup_load_value">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etRouteDiscount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Total To Account For-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_total_to_account_for"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/total_to_account_for"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_route_discount">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etTotalToAccountFor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Less-->
+            <com.continentalbakingco.balancesheet20.utils.MTextView
+                android:id="@+id/tv_less"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/teal_700"
+                android:gravity="center"
+                android:text="@string/customer_balance"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_total_to_account_for"></com.continentalbakingco.balancesheet20.utils.MTextView>
+            <!--Account Receivables-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_accounts_receivables"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/accounts_receivables"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_other_calculations">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etAccountReceivables"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Cash/Cheque Sales-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_cheque_cash_sales"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/cash_cheque_sales"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_accounts_receivables">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etSales"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Accumulated Customer Balance-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_accumulated_customer_balance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/accumulated_customer_balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_less">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etAccumulatedCustomerBalance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Customer Balance Collection-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_customer_balance_collection"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/customer_balance_collection"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_non_ar_credit_sales">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etCustomerBalanceCollection"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/red_900"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--NON AR Credit Sales [For Today]-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_non_ar_credit_sales"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/non_ar_credit_sales_for_today"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_accumulated_customer_balance">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etNonARCreditSales"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--     Current Customer Balance       -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_customer_balance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/remaining_customer_balance"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_customer_balance_collection">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/et_customer_balance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_easter"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorThemeOrange_2"
+                android:gravity="center"
+                android:text="@string/easter_customer_balance"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_customer_balance" />
+
+            <!--EASTER Accumulated Customer Balance-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_easter_accumulated_customer_balance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/easter_accumulated_customer_balance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_easter">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etEasterAccumulatedCustomerBalance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--NON AR Credit Sales [For Today]-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_easter_non_ar_credit_sales"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/easter_non_ar_credit_sales"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_easter_accumulated_customer_balance">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etEasterNonARCreditSales"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Customer Balance Collection-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_easter_customer_balance_collection"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/easter_customer_balance_collection"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_easter_non_ar_credit_sales">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etEasterCustomerBalanceCollection"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/red_900"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--     Current Customer Balance       -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_easter_customer_balance"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/easter_remaining_customer_balance"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_easter_customer_balance_collection">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etEasterCustomerBalance"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_sample_recovery"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/warning_yellow"
+                android:gravity="center"
+                android:text="@string/sample_recovery"
+                android:textColor="@color/colorSecondaryText"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_easter_customer_balance" />
+
+            <!--EASTER Accumulated Customer Balance-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_sample_recovery_accumulated"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/sample_recovery_accumulated"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_sample_recovery">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etSampleRecoveryAccumulated"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--NON AR Credit Sales [For Today]-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_sample_issued_today"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/samples_issued_for_today"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_sample_recovery_accumulated">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etSampleIssuedToday"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!--     Current Customer Balance       -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_total_sample_recovery"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/total_sample_recovery"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_sample_issued_today">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etTotalSampleRecovery"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_other_calculations"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/red_900"
+                android:gravity="center"
+                android:text="@string/other_calculations"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_total_sample_recovery"></TextView>
+            <!--Returns [Damaged Goods]-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_returns_damage_goods"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/returns_damaged_goods"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_cheque_cash_sales">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etReturns"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Credit Notes / [Bin Transfer]-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_credit_note_bin_transfers"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/credit_notes_bin_transfer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_returns_damage_goods">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etBinTransferCreditNotes"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Returned Cheques-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_returned_cheques"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/returned_cheques"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_credit_note_bin_transfers">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etReturnedCheques"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Post Dated Cheques-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_posted_cheques"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/post_dated_cheques"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_returned_cheques">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etPostDatedCheques"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Tax Exemption-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_tax_exempt"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/tax_exemption"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_posted_cheques">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etTaxExemption"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Route Expense-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_route_expense"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/route_expense"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_tax_exempt">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etRouteExpense"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Excess Charges-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_excess_charges"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/excess_charges"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_route_expense">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etExcessCharges"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--TruckStock-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_truck_stock"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/truck_stock"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_excess_charges">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etTruckStock"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Other Misc-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_other_misc"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/other_misc"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_truck_stock">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etMisc"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLength="20"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_comments"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/comments"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_other_misc">
+                <!-- Comments -->
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etComments"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minHeight="100dp"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Total Accounted For-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_total_accounted_for"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:hint="@string/total_accounted_for"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_comments">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etTotalAccountedFor"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <!--Net Overage/Shortage-->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tl_net_overage_shortage"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:hint="@string/net_overage_shortage"
+                app:boxBackgroundColor="#dfdfdf"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tl_total_accounted_for"
+                app:layout_goneMarginBottom="16dp">
+
+                <com.continentalbakingco.balancesheet20.utils.MEditText
+                    android:id="@+id/etNetOverageOrShortage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="numberDecimal"
+                    android:padding="@dimen/et_padding"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/et_textSize"
+                    android:textStyle="bold" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cs_buttons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sv_balance_sheet"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <com.continentalbakingco.balancesheet20.utils.VButton
+            android:id="@+id/btnCalculate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/national_blue"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/calculate"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_verify"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.continentalbakingco.balancesheet20.utils.VButton
+            android:id="@+id/btn_verify"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:enabled="false"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/verify"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSubmit"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/btnCalculate"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.continentalbakingco.balancesheet20.utils.VButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:enabled="false"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/submit"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/btn_verify"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
